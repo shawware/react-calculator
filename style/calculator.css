@@ -1,0 +1,15 @@
+p.calc-text {
+	font-weight: bold;
+	font-size:   125%;
+}
+
+button.calc-button {
+	font-weight: bold;
+}
+
+p.calc-value {
+	border: 1px solid black;
+	width: 120px;
+	text-align:	right;
+	padding-right: 3px;
+}
