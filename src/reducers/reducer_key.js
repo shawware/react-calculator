@@ -10,9 +10,14 @@ const initialValue = 0;
 export default function(state = initialValue, action) {
 	if (action.type == KEY_PRESS) {
 		if (Calculator.isValidKey(action.key)) {
-			Calculator.increment();
+			if (Calculator.acceptKey(action.key)) {
+				return Calculator.currentValue();
+			} else {
+				// TODO: handle the error
+			}
+		} else {
+			console.log(`invalid key press: ${action.key}`);
 		}
-		return Calculator.currentValue();
 	}
 	return state;
 }
