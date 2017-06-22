@@ -17,9 +17,10 @@ You can see what has been done and what is on the "to do" list.
 - [x] Display current number (while it is being entered)
 - [x] Display running total (upon equals or next operator)
 - [x] Repeat last operation (if there is one) via Equals
-- [ ] Decimal point (for floating point numbers)
+- [x] Decimal point (for floating point numbers)
 - [ ] Change sign, ie. +/-
 - [ ] Backspace (while entering a number)
+- [ ] Handling of floating point inaccuracies
 - [ ] Overflow and underflow detection and handling
 - [ ] BODMAS
 - [ ] Parentheses

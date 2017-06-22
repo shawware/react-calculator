@@ -4,7 +4,7 @@ import Calculator from '../services/calculator';
 /*
  * Define the calculator keys we support.
  */
-const KEYS = "0123456789*/+-=C";
+const KEYS = "0123456789.*/+-=C";
 
 /*
  * Define the initial value to display.
@@ -49,6 +49,9 @@ export default function(state = initialValue, action) {
 					break;
 				case '/' :
 					Calculator.divide();
+					break;
+				case '.' :
+					Calculator.dot();
 					break;
 				default :
 					Calculator.digit(action.key);

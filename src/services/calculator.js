@@ -32,7 +32,7 @@ class Calculator {
 		if ((this.runningTotal == null) && (this.currentNumber == null)) {
 			value = 0;
 		} else if (this.currentNumber != null) {
-			value = this.currentNumber.value();
+			value = this.currentNumber.displayValue();
 		} else if (this.runningTotal != null) {
 			value = this.runningTotal;
 		}
@@ -40,6 +40,18 @@ class Calculator {
 	}
 
 	digit(digit) {
+		this.checkCurrentNumber();
+		this.currentNumber.acceptDigit(digit);
+		this.storedOperation = null;
+	}
+
+	dot() {
+		this.checkCurrentNumber();
+		this.currentNumber.acceptDecimalPoint();
+		this.storedOperation = null;
+	}
+
+	checkCurrentNumber() {
 		if (this.currentNumber == null) {
 			this.currentNumber = new NumericValue();
 			// If we're starting again with a new number ...
@@ -47,8 +59,6 @@ class Calculator {
 				this.runningTotal = null;
 			}
 		}
-		this.currentNumber.acceptDigit(digit);
-		this.storedOperation = null;
 	}
 
 	plus() {

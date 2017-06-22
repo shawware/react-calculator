@@ -18,7 +18,7 @@ class Application extends Component {
 			{
 				keys.map( (k, i) =>
 					<td key={i}>
-						{this.renderKey(k)}
+						{ (k === " ") ? " " : this.renderKey(k) }
 					</td>
 				)
 			}
@@ -28,10 +28,11 @@ class Application extends Component {
 
 	render() {
 		let rows = [
-			[ 7,   8,   9, "/" ],
-			[ 4,   5,   6, "*" ],
-			[ 1,   2,   3, "-" ],
-			[ 0, "C", "=", "+" ]
+			[   7,   8,   9, "/" ],
+			[   4,   5,   6, "*" ],
+			[   1,   2,   3, "-" ],
+			[   0, ".", "=", "+" ],
+			[ " ", "C", " ", " " ]
 		];
 		return(
 			<div>
