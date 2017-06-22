@@ -73,7 +73,7 @@ class Calculator {
 				this.currentNumber = this.storedOperation.number;
 				this.operator = this.storedOperation.operator;
 			}
-		    if ((this.operator != null) && (this.currentNumber != null)) {
+			if ((this.operator != null) && (this.currentNumber != null)) {
 				this.updateRunningTotal();
 				this.storedOperation = {
 					number: this.currentNumber,
