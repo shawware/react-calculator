@@ -10,6 +10,11 @@ The UI, components, containers, actions and reducers follow the standard React /
 A separate Calculator class provides the calculation service via an API.
 The reducer maps between the two.
 
+Function
+--------
+
+The [list of functions](./Functions.md) will (probably) grow over time and is not completely implemented yet.
+
 Owner And Copyright Notice
 --------------------------
 
