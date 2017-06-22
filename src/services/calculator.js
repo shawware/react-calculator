@@ -15,9 +15,10 @@ class Calculator {
 	}
 
 	clear() {
-		this.runningTotal      = null;
-		this.currentNumber     = null;
-		this.operator          = null;
+		this.runningTotal    = null;
+		this.currentNumber   = null;
+		this.operator        = null;
+		this.storedOperation = null;
 	}
 
 	currentValue() {
@@ -47,6 +48,7 @@ class Calculator {
 			}
 		}
 		this.currentNumber.acceptDigit(digit);
+		this.storedOperation = null;
 	}
 
 	plus() {
@@ -66,13 +68,20 @@ class Calculator {
 	}
 
 	equals() {
-		if ((this.runningTotal != null) &&
-		    (this.operator != null) &&
-		    (this.currentNumber != null)) {
-			this.updateRunningTotal();
-			// TODO: store so we can repeat equals
-			this.operator = null;
-			this.currentNumber = null;
+		if (this.runningTotal != null) {
+			if (this.storedOperation != null) {
+				this.currentNumber = this.storedOperation.number;
+				this.operator = this.storedOperation.operator;
+			}
+		    if ((this.operator != null) && (this.currentNumber != null)) {
+				this.updateRunningTotal();
+				this.storedOperation = {
+					number: this.currentNumber,
+					operator: this.operator
+				};
+				this.operator = null;
+				this.currentNumber = null;
+			}
 		}
 	}
 
@@ -91,6 +100,7 @@ class Calculator {
 			}
 		}
 		this.operator = op;
+		this.storedOperation = null;
 	}
 
 	updateRunningTotal() {
