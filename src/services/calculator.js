@@ -2,19 +2,19 @@
 
 import NumericValue from './number';
 
-/*
- * Define the calculator keys we support.
- * This effectively defines the supported operations and number types.
- */
-const KEYS = "0123456789*/+-=C";
+// Enumerate the operations
+const PLUS   = 1;
+const MINUS  = 2;
+const TIMES  = 3;
+const DIVIDE = 4;
 
 class Calculator {
 	
 	constructor() {
-		this.reset();
+		this.clear();
 	}
 
-	reset() {
+	clear() {
 		this.runningTotal      = null;
 		this.currentNumber     = null;
 		this.operator          = null;
@@ -38,21 +38,7 @@ class Calculator {
 		return value;
 	}
 
-	acceptKey(key) {
-		if (!this.isValidKey(key)) {
-			console.log(`invalid key: ${key}`);
-			return false;
-		}
-		let rc;
-		if (typeof key === 'number') {
-			rc = this.acceptDigit(key);
-		} else {
-			rc = this.acceptOperator(key);
-		}
-		return rc;
-	}
-
-	acceptDigit(digit) {
+	digit(digit) {
 		if (this.currentNumber == null) {
 			this.currentNumber = new NumericValue();
 			// If we're starting again with a new number ...
@@ -60,33 +46,26 @@ class Calculator {
 				this.runningTotal = null;
 			}
 		}
-		return this.currentNumber.acceptDigit(digit);
+		this.currentNumber.acceptDigit(digit);
 	}
 
-	// TODO: highlight last operator if +-*/
-	acceptOperator(op) {
-		let rc = true;
-		switch (op) {
-			case 'C' :
-				this.reset();
-				break;
-			case '=' :
-				this.acceptEquals();
-				break;
-			case '+' :
-			case '-' :
-			case '*' :
-			case '/' :
-				this.acceptOperation(op);
-				break;
-			default :
-				rc = false;
-				break;
-		}
-		return rc;
+	plus() {
+		this.acceptOperation(PLUS);
 	}
 
-	acceptEquals() {
+	minus() {
+		this.acceptOperation(MINUS);
+	}
+
+	times() {
+		this.acceptOperation(TIMES);
+	}
+
+	divide() {
+		this.acceptOperation(DIVIDE);
+	}
+
+	equals() {
 		if ((this.runningTotal != null) &&
 		    (this.operator != null) &&
 		    (this.currentNumber != null)) {
@@ -117,33 +96,19 @@ class Calculator {
 	updateRunningTotal() {
 		let delta = this.currentNumber.value();
 		switch (this.operator) {
-			case '+' :
+			case PLUS :
 				this.runningTotal += delta;
 				break;
-			case '-' :
+			case MINUS :
 				this.runningTotal -= delta;
 				break;
-			case '*' :
+			case TIMES :
 				this.runningTotal *= delta;
 				break;
-			case '/' :
+			case DIVIDE :
 				this.runningTotal /= delta;
 				break;
-			default :
-				// If none, then do nothing.
-				console.log(`updateRunningTotal called with invalid operator: ${this.operator}`);
-				break;
 		}
-	}
-
-	isValidKey(key) {
-		if (typeof key === 'number') {
-			key = key.toString();
-		}
-		if (typeof key !== 'string') {
-			return false;
-		}
-		return (key.length == 1) && (KEYS.indexOf(key) >= 0);
 	}
 }
 
