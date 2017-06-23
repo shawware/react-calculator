@@ -10,14 +10,23 @@ import { keyPress } from '../actions/keyPress';
 class CalculatorKey extends Component {
 
 	render() {
-		// Create a function to call the given action, passing it the key type and name.
+		let style = "calc-button-normal";
+		if ((this.props.lastKey != null) && (this.props.name == this.props.lastKey)) {
+			style = "calc-button-pressed";
+		}
 		return(
-			<button className="calc-button"
+			<button className={style}
 				onClick={() => this.props.action(this.props.text)}>
 				{this.props.text}
 			</button>
 		);
 	}
+}
+
+function mapStateToProps(state) {
+	return {
+		lastKey: state.lastKey,
+	};
 }
 
 /*
@@ -27,4 +36,4 @@ function mapDispatchToProps(dispatch) {
 	return bindActionCreators({ action : keyPress }, dispatch);
 }
 
-export default connect(null, mapDispatchToProps)(CalculatorKey);
+export default connect(mapStateToProps, mapDispatchToProps)(CalculatorKey);

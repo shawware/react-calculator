@@ -3,8 +3,19 @@ p.calc-text {
 	font-size:   125%;
 }
 
-button.calc-button {
+table.calc-table {
+	border: 1px solid black;
+}
+
+table.calc-table button {
 	font-weight: bold;
+}
+
+button.calc-button-pressed {
+	color: red;
+}
+
+button.calc-button-normal {
 }
 
 p.calc-value {

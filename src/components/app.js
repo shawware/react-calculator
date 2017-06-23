@@ -38,7 +38,7 @@ class Application extends Component {
 			<div>
 				<Text text="Calculator" />
 				<Value text="0" />
-				<table>
+				<table className="calc-table">
 					<tbody>
 						{ rows.map((row, i) => this.renderRow(row, i)) }
 					</tbody>
