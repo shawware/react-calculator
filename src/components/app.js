@@ -8,7 +8,7 @@ class Application extends Component {
 
 	renderKey(key) {
 		return(
-			<CalculatorKey text={key} name={key} />
+			<CalculatorKey name={key} text={key} />
 		);
 	}
 
@@ -16,8 +16,8 @@ class Application extends Component {
 		return(
 			<tr key={i}>
 			{
-				keys.map( (k, i) =>
-					<td key={i}>
+				keys.map( (k, j) =>
+					<td key={j}>
 						{ (k === " ") ? " " : this.renderKey(k) }
 					</td>
 				)

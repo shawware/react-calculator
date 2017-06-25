@@ -5,7 +5,7 @@ import { bindActionCreators } from 'redux';
 import { keyPress } from '../actions/keyPress';
 
 /*
- * A button as a container
+ * A calculator key as a container
  */
 class CalculatorKey extends Component {
 
@@ -16,7 +16,7 @@ class CalculatorKey extends Component {
 		}
 		return(
 			<button className={style}
-				onClick={() => this.props.action(this.props.text)}>
+				onClick={() => this.props.action(this.props.name)}>
 				{this.props.text}
 			</button>
 		);
@@ -25,7 +25,7 @@ class CalculatorKey extends Component {
 
 function mapStateToProps(state) {
 	return {
-		lastKey: state.lastKey,
+		lastKey: state.lastKey
 	};
 }
 

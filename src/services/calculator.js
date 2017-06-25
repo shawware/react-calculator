@@ -22,9 +22,7 @@ class Calculator {
 	}
 
 	currentValue() {
-		let value = this.determineValueToDisplay();
-		//console.log(`value: ${value}`);
-		return value;
+		return this.determineValueToDisplay();
 	}
 
 	determineValueToDisplay() {
@@ -103,11 +101,10 @@ class Calculator {
 		} else {
 			if (this.runningTotal == null) {
 				this.runningTotal = this.currentNumber.value();
-				this.currentNumber = null;
 			} else {
 				this.updateRunningTotal();
-				this.currentNumber = null;
 			}
+			this.currentNumber = null;
 		}
 		this.operator = op;
 		this.storedOperation = null;
