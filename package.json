@@ -4,7 +4,7 @@
   "description": "A simple calculator implemented in React / Redux",
   "author": "David Shaw",
   "url": "https://github.com/shawware/calculator",
-  "repository": "https://github.com/shawware/calculator.git",
+  "repository": "https://github.com/shawware/react-calculator.git",
   "license": "GPL-3.0",
   "private": true,
   "scripts": {
